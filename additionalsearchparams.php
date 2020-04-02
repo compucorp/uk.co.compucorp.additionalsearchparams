@@ -133,3 +133,16 @@ function additionalsearchparams_civicrm_alterSettingsFolders(&$metaDataFolders =
 function additionalsearchparams_civicrm_entityTypes(&$entityTypes) {
   _additionalsearchparams_civix_civicrm_entityTypes($entityTypes);
 }
+
+/**
+ * Implements hook_civicrm_buildForm().
+ */
+function additionalsearchparams_civicrm_buildForm($formName, &$form) {
+  $hooks = [
+    new CRM_AdditionalSearchParams_Hook_BuildForm_SetBasicSearchUrlParamsAsDefault(),
+  ];
+
+  foreach ($hooks as $hook) {
+    $hook->run($form, $formName);
+  }
+}
