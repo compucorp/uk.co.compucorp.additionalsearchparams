@@ -20,8 +20,9 @@
   <compatibility>
     <ver>5.0</ver>
   </compatibility>
-  <comments></comments>
+  <comments/>
   <civix>
     <namespace>CRM/AdditionalSearchParams</namespace>
+    <format>22.05.2</format>
   </civix>
 </extension>
