@@ -40,12 +40,15 @@ class CRM_AdditionalSearchParams_Hook_BuildForm_SetBasicSearchUrlParamsAsDefault
    *   Form Class object.
    */
   private function setDefaultsForUrlParams($form) {
+    $defaults = $form->_defaultValues;
     foreach ($this->urlParameters as $paramName => $paramType) {
-      $paramValue = CRM_Utils_Request::retrieve($paramName, $paramType);
+      $paramValue = CRM_Utils_Request::retrieveValue($paramName, $paramType, NULL, FALSE, 'GET');
       if ($paramValue) {
-        $form->setDefaults([$paramName => $paramValue]);
+        $defaults[$paramName] = $paramValue;
       }
     }
+
+    $form->setDefaults($defaults);
   }
 
   /**
